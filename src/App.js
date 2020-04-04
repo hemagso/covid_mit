@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import * as Survey from 'survey-react';
+import 'survey-react/survey.css'
 import './App.css';
+import { geolocated } from "react-geolocated";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+Survey.StylesManager.applyTheme("default")
+
+class App extends Component {
+    json = {
+        elements: [
+            { type: "text", name: "customerName", title: "What is your name?", isRequired: true},
+            { type: "text", name: "customerLastName", title: "What is your last name?", isRequired: true}
+        ]
+    };
+
+    onComplete(result) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                alert(position.coords.latitude, position.coords.longitude)
+            },
+            function(error) {
+                alert(error.message)
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000
+            }
+        );
+        console.log(result)
+    }
+
+    render() {
+        let model = new Survey.Model(this.json)
+
+        return(
+            <div>
+                <Survey.Survey model={model} onComplete={this.onComplete()}/>
+            </div>
+        );
+
+    }
 }
 
 export default App;
+
+
