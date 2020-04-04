@@ -17,10 +17,10 @@ class App extends Component {
     onComplete(result) {
         navigator.geolocation.getCurrentPosition(
             function(position) {
-                alert(position.coords.latitude, position.coords.longitude)
+                console.log(position.coords.latitude, position.coords.longitude)
             },
             function(error) {
-                alert(error.message)
+                console.log(error.message)
             },
             {
                 enableHighAccuracy: true,
