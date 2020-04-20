@@ -143,7 +143,14 @@ var survey_params = {
        "text": "Prefer not to answer"
       }
      ]
-    }
+    },
+    {
+        "type": "text",
+        "name": "numberOfContacts",
+        "title": "On average how many people you meet on a day?",
+        "description": "Please enter the number of people you meet",
+        "placeHolder": "e.g. 3"
+       }
    ],
    "title": "About you"
   },
@@ -252,13 +259,6 @@ var survey_params = {
    "name": "Extra",
    "elements": [
     {
-     "type": "file",
-     "name": "googleLocationHistory",
-     "storeDataAsText": true,
-     "title": "OPTIONAL - Upload you google location history (see here how)",
-     "maxSize": 0
-    },
-    {
      "type": "comment",
      "name": "comment",
      "title": "Anything else we should know?"
@@ -266,6 +266,7 @@ var survey_params = {
     {
      "type": "boolean",
      "name": "locationAuthorization",
+	    "defaultValue": "true",
      "title": "Are you willing to share your location with your answers?"
     }
    ]
