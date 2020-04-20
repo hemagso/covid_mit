@@ -3,7 +3,7 @@ import * as Survey from 'survey-react';
 import 'survey-react/survey.css'
 import './App.css';
 import axios from 'axios'
-import {survey_params, survey_version} from "./mock_survey";
+import {survey_params, survey_version} from "./full_survey";
 
 Survey.StylesManager.applyTheme("default")
 
